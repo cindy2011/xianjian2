@@ -1,0 +1,234 @@
+<!-- version为版本，title是全景标题，可以任意修改 -->
+<krpano version="1.19" title="Corfu Holiday Trip">
+
+    <!-- include url   顾名思义，引入skin / vtourskin.xml文件，这是全景漫游的皮肤文件，我们浏览全景漫游有一系列的按钮功能，基本都是在这个文件里完成，这个文件的内容以后再细说，现在大概知道它的作用就好
+   -->
+
+<!-- webvr button style (adjust to match skin style) -->
+    <!--默认皮肤的各项参数
+ customize skin settings: maps, gyro, thumbnails, tooltips, layout, design, ...
+-->
+    <skin_settings maps="false" 
+                   maps_type="google" 
+                   maps_bing_api_key="An4-9WoANqtASVorNezSjENest2VC0zoAzvMhEpdTjb3uY-k6u6bMkPxYpDsolsF" 
+                   maps_zoombuttons="false" 
+                   gyro="true" 
+                   littleplanetintro="false" 
+                   title="true" 
+                   thumbs="true" 
+                   thumbs_width="120" 
+                   thumbs_height="80" 
+                   thumbs_padding="10" 
+                   thumbs_crop="" 
+                   thumbs_opened="false" 
+                   thumbs_text="false" 
+                   thumbs_dragging="true" 
+                   thumbs_onhoverscrolling="false" 
+                   thumbs_scrollbuttons="false" 
+                   thumbs_scrollindicator="false" 
+                   thumbs_loop="false" 
+                   tooltips_buttons="false" 
+                   tooltips_thumbs="false" 
+                   tooltips_hotspots="false" 
+                   tooltips_mapspots="false" 
+                   deeplinking="false" 
+                   loadscene_flags="MERGE" 
+                   loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)" 
+                   loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)" 
+                   loadscene_blend_next="SLIDEBLEND(0.5, 0, 0.75, linear)" 
+                   loadingtext="loading..." 
+                   layout_width="100%" 
+                   layout_maxwidth.normal="900" 
+                   layout_maxwidth.mobile="" 
+                   controlbar_width.normal="-44" 
+                   controlbar_width.mobile="100%" 
+                   controlbar_height.normal="38" 
+                   controlbar_height.mobile="34" 
+                   controlbar_offset.normal="22" 
+                   controlbar_offset.mobile="0" 
+                   controlbar_offset_closed="-40" 
+                   controlbar_overlap.normal="7" 
+                   controlbar_overlap.mobile="2" 
+                   design_skin_images="vtourskin.png" 
+                   design_bgcolor="0x000000" 
+                   design_bgalpha="0.5" 
+                   design_bgborder="0 0xFFFFFF 1.0" 
+                   design_bgroundedge.normal="9" 
+                   design_bgroundedge.mobile="1" 
+                   design_bgshadow="0 0 9 0xFFFFFF 0.5" 
+                   design_thumbborder_bgborder="4 0xFFFFFF 1.0" 
+                   design_thumbborder_padding="2" 
+                   design_thumbborder_bgroundedge="5" 
+                   design_text_css="color:#FFFFFF; font-family:Arial; font-weight:bold;" 
+                   design_text_shadow="1" />
+    <!--
+
+        For an alternative skin design either change the <skin_settings> values
+        from above or optionally include one of the predefined designs from below.
+        Either by removing the 'xml-if-check' from the particular <include> element
+        or by adding e.g. initvar:{design:'flat_light'} to the embedpano() call in
+        the html file:
+
+-->
+    <!--
+ startup action - here the first pano/scene will be loaded
+-->
+    <action name="startup" autorun="onstart"><!--设置为onstart可以在打开浏览器运行全景漫游时就可以执行这个action -->
+        if(startscene === null, copy(startscene,scene[0].name)); loadscene(get(startscene), null, MERGE);
+    </action>
+
+    <scene name="scene_achilleion-hof-unten" title="Achilleion - Garden" onstart=""  lat="39.56330333" lng="19.90445833" heading="0.0">
+        <!-- scene里的view元素，是指定全景浏览者观看时的视角，比如初始视角，缩放范围，视域范围等等 -->
+        <view hlookat="-1" vlookat="11" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+        <preview url="imgtest/f.jpg" />
+        <image type="CUBE">
+            <!-- 全景图类型 （六面体）-->
+            <cube url="imgtest/%s.jpg" />
+            <!--%s定义了六个方向的图片路径读取切片，文件后缀要加上l,f方式来识别-->
+            <plugin name="skin_gyro" keep="true" url="" html5_url="plugins/gyro2.js" devices="html5" enabled="true" />
+            <!--  
+            keep是否在跳入新场景时仍然保留显示该元素
+            name定义引入的元素名称
+            devices设置显示的设备类型 
+            enabled设置插入元素是否接受鼠标事件
+            -->
+        </image>
+        <!--  place your scene hotspots here  -->
+           <hotspot 
+      name="spot1"  
+      type="image"  
+      ath="93.531" 
+      atv="-1.109"  
+      url="img/btn1.png"
+      width="174"
+      height="206"
+      visible="true"
+      onclick="js(geta(1))" 
+      zoom="true" 
+        />
+              <hotspot 
+      name="spot2"  
+      type="image"  
+      ath="53.531" 
+      atv="-1.109"     
+      url="img/btn2.png"
+      width="174"
+      height="206"
+      visible="true"   onclick="js(geta(2))"   
+      zoom="true" 
+        />
+         <hotspot 
+      name="spot3"  
+      type="image"  
+      ath="-20.531" 
+      atv="20.109"     
+      url="img/btn3.png"
+      width="150"
+      height="263"
+      visible="true"   onclick="js(geta(3))"  
+      zoom="true" 
+        />
+           <hotspot 
+      name="spot4"  
+      type="image"  
+      ath="15.531" 
+      atv="-5.109"     
+      url="img/btn4.png"
+      width="180"
+      height="287"
+      visible="true"   onclick="js(geta(4))"  
+      zoom="true" 
+        />
+                <hotspot 
+      name="spot5"  
+      type="image"  
+      ath="120.531" 
+      atv="15.109"     
+      url="img/btn5.png"
+      width="180"
+      height="221"
+      visible="true"   onclick="js(geta(5))"  
+      zoom="true" 
+        />
+             <hotspot 
+      name="spot6"  
+      type="image"  
+      ath="170.531" 
+      atv="15.109"     
+      url="img/btn6.png"
+      width="223"
+      height="210"
+      visible="true"   onclick="js(geta(6))"  
+      zoom="true" 
+        />
+             <hotspot 
+      name="spot7"  
+      type="image"  
+      ath="210.531" 
+      atv="15.109"     
+      url="img/btn7.png"
+      width="180"
+      height="332"
+      visible="true"   onclick="js(geta(7))"  
+      zoom="true" 
+        />
+                  <hotspot 
+      name="spot9"  
+      type="image"  
+      ath="260.531" 
+      atv="15.109"     
+      url="img/btn9.png"
+      width="200"
+      height="244"
+      visible="true"   onclick="js(geta(9))"  
+      zoom="true" 
+        />
+                     <hotspot 
+      name="spot10"  
+      type="image"  
+      ath="300.531" 
+      atv="15.109"     
+      url="img/btn10.png"
+      width="150"
+      height="240"
+      visible="true"   onclick="js(geta(10))"  
+      zoom="true" 
+        />
+                      <hotspot 
+      name="spot11"  
+      type="image"  
+      ath="-50" 
+      atv="-50"     
+      url="img/btn11.png"
+      width="120"
+      height="152"
+      visible="true"   onclick="js(geta(11))"  
+      zoom="true" 
+        />
+         <hotspot 
+      name="spot12"  
+      type="image"  
+      ath="-60" 
+      atv="60"     
+      url="img/btn12.png"
+      width="80"
+      height="101"
+      visible="true"   onclick="js(geta(12))"  
+      zoom="true" 
+        />
+            <hotspot 
+      name="spot13"  
+      type="image"  
+      ath="80" 
+      atv="-60"     
+      url="img/btn13.png"
+      width="120"
+      height="101"
+      visible="true"   onclick="js(geta(13))"  
+      zoom="true" 
+        />
+    </scene>
+ 
+<autorotate enabled="true" waittime="0" speed="-5.0" horizon="0.0" tofov="120.0"/>
+
+</krpano>
