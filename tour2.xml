@@ -229,7 +229,7 @@
         />
     </scene>
  
-<!-- <autorotate enabled="true" waittime="0" speed="-5.0" horizon="0.0" tofov="120.0"/> -->
+<autorotate enabled="true" waittime="0" speed="-5.0" horizon="0.0" tofov="120.0"/>
 
 <plugin 
         name="gyro" 
